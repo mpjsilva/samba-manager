@@ -1,0 +1,11 @@
+# Ambiente de build: mesma distro/versão do desktop alvo (Fedora 44), para o
+# binário usar o Qt 6 e a glibc que o sistema do usuário já tem.
+FROM registry.fedoraproject.org/fedora:44
+
+RUN dnf -y install --setopt=install_weak_deps=False \
+        gcc-c++ cmake ninja-build \
+        qt6-qtbase-devel \
+        samba-common-tools \
+    && dnf clean all
+
+WORKDIR /src

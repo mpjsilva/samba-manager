@@ -5,13 +5,13 @@
 # Uso: tools/build-remote.sh [--no-tests] [--sanitize] [--core-only]
 #
 # Variáveis (com padrão):
-#   SM_BUILD_HOST  jamerson@192.168.1.254
+#   SM_BUILD_HOST  usuario@servidor (obrigatória; precisa de podman)
 #   SM_BUILD_KEY   chave SSH (opcional)
 #   SM_BUILD_DIR   diretório remoto (~/build/samba_managerNG)
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-HOST="${SM_BUILD_HOST:-jamerson@192.168.1.254}"
+HOST="${SM_BUILD_HOST:?defina SM_BUILD_HOST=usuario@servidor (servidor com podman)}"
 RDIR="${SM_BUILD_DIR:-build/samba_managerNG}"
 IMAGE="samba-manager-ng-builder:f44"
 TESTS=1

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3c6eb4"/>
+      <stop offset="1" stop-color="#22385e"/>
+    </linearGradient>
+    <linearGradient id="folder" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd97a"/>
+      <stop offset="1" stop-color="#e8a33d"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="52" fill="url(#bg)"/>
+  <rect x="8" y="8" width="240" height="240" rx="52" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="4"/>
+  <!-- folder back + tab -->
+  <path d="M52 96 h44 l14 14 h94 v84 a12 12 0 0 1 -12 12 H52 a12 12 0 0 1 -12 -12 v-86 a12 12 0 0 1 12 -12 z" fill="#c77f24"/>
+  <path d="M40 112 h176 v82 a12 12 0 0 1 -12 12 H52 a12 12 0 0 1 -12 -12 z" fill="url(#folder)"/>
+  <!-- share nodes -->
+  <g fill="#ffffff">
+    <circle cx="128" cy="150" r="13"/>
+    <circle cx="84" cy="182" r="10"/>
+    <circle cx="172" cy="182" r="10"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="7" stroke-linecap="round">
+    <line x1="119" y1="156" x2="93" y2="176"/>
+    <line x1="137" y1="156" x2="163" y2="176"/>
+  </g>
+  <g fill="#3c6eb4">
+    <circle cx="128" cy="150" r="5"/>
+    <circle cx="84" cy="182" r="4"/>
+    <circle cx="172" cy="182" r="4"/>
+  </g>
+</svg>

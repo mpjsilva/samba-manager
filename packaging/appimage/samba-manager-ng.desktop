@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Samba Manager
+GenericName=Gerenciador Samba
+Comment=Gerenciador de compartilhamentos Samba (SMB/CIFS)
+Exec=samba-manager-ng
+Icon=samba-manager-ng
+Type=Application
+Categories=System;Settings;Network;FileTransfer;
+Terminal=false
+StartupNotify=true
+StartupWMClass=samba-manager-ng
+X-AppImage-Name=Samba Manager NG

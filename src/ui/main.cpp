@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     QApplication::setApplicationDisplayName(QStringLiteral("Samba Manager"));
     QApplication::setApplicationVersion(QString::fromLatin1(sm::config::kAppVersion));
     QApplication::setDesktopFileName(QStringLiteral("samba-manager-ng"));
-    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("folder-remote")));
+    QApplication::setWindowIcon(QIcon(QStringLiteral(":/samba-manager-ng.png")));
     sm::ui::theme::apply(app);
 
     QString error;

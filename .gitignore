@@ -3,3 +3,4 @@ build-*/
 out/
 *.AppImage
 *.user
+*.AppImage.sha256

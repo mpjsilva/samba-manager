@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# AppRun — Samba Manager NG (AppImage)
+# - Usa o Qt 6 DO SISTEMA (Fedora: qt6-qtbase-gui); os binários foram
+#   compilados contra o Qt do Fedora 44, então pedem Qt >= o da compilação.
+# - A interface abre o auxiliar root com ``pkexec $APPIMAGE --helper``: o
+#   mount FUSE do usuário é inacessível ao root, então o root re-executa o
+#   próprio AppImage e cai no ramo --helper abaixo.
+set -u
+
+APPDIR="$(dirname "$(readlink -f "$0")")"
+GUI="$APPDIR/usr/bin/samba-manager-ng"
+HELPER="$APPDIR/usr/libexec/samba-manager-ng/samba-manager-ng-helper"
+
+if [[ "${1:-}" == "--helper" ]]; then
+    exec "$HELPER"
+fi
+
+gui_error() {
+    local msg="$1"
+    if [[ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]]; then
+        if command -v zenity >/dev/null 2>&1; then
+            zenity --error --title="Samba Manager" --text="$msg" 2>/dev/null || true
+        elif command -v kdialog >/dev/null 2>&1; then
+            kdialog --error "$msg" 2>/dev/null || true
+        fi
+    fi
+    echo "Samba Manager: $msg" >&2
+}
+
+if [[ -z "${DISPLAY:-}" && -z "${WAYLAND_DISPLAY:-}" ]]; then
+    gui_error "Nenhum ambiente gráfico detectado (DISPLAY/WAYLAND_DISPLAY vazios)."
+    exit 1
+fi
+
+# Bibliotecas Qt ausentes ou antigas demais ("not found" / "version ... not found").
+missing="$(ldd "$GUI" 2>&1 | grep -i 'not found' | head -5)"
+if [[ -n "$missing" ]]; then
+    gui_error "Bibliotecas do Qt 6 ausentes ou antigas. No Fedora: sudo dnf install qt6-qtbase-gui qt6-qtwayland
+
+$missing"
+    exit 1
+fi
+
+exec "$GUI" "$@"

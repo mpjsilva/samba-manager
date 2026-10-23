@@ -66,6 +66,8 @@ target_link_libraries(sm_ui PUBLIC sm_core Qt6::Widgets Qt6::Concurrent)
 
 add_executable(samba-manager-ng src/ui/main.cpp)
 target_link_libraries(samba-manager-ng PRIVATE sm_ui)
+qt_add_resources(samba-manager-ng icons PREFIX "/" BASE packaging/icons
+  FILES packaging/icons/samba-manager-ng.png)
 install(TARGETS samba-manager-ng RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 endif()
 
